@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membrana - Segurança Digital e Soluções Tech</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://source.unsplash.com/random/1600x900/?technology,security') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Project */
+        .project-highlight {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .project-highlight h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Locations */
+        .locations {
+            background: #f8f9fa;
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        
+        .location-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+        }
+        
+        .cta h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">MEMBRANA</div>
+            <div class="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#projeto">Projeto</a></li>
+                <li><a href="#localizacao">Atendimento</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>Segurança Digital e Soluções Tech</h1>
+            <p>Proteja seus dados, evite golpes e resolva problemas técnicos com especialistas na Grande Florianópolis.</p>
+            <a href="#servicos" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Consultoria em Segurança Digital</h3>
+                    <p>Avaliamos sua presença online e ajudamos a proteger seus dados contra ameaças digitais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Suporte Técnico Completo</h3>
+                    <p>Conserto e manutenção de computadores, notebooks, celulares e tablets.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Recuperação de Dados</h3>
+                    <p>Recuperamos seus arquivos importantes de dispositivos danificados ou corrompidos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Configuração de Segurança</h3>
+                    <p>Implementamos medidas de proteção para suas contas e dispositivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-highlight" id="projeto">
+        <div class="container">
+            <h2>Projeto Membrana</h2>
+            <p>Um jogo de realidade alternativa que ensina segurança digital enquanto você se diverte. Participe do ARG e aprenda a se proteger online de forma envolvente.</p>
+            <a href="#" class="btn" style="margin-top: 1.5rem;">Comece Agora</a>
+        </div>
+    </section>
+
+    <section class="locations" id="localizacao">
+        <div class="container">
+            <h2 class="section-title">Atendimento na Grande Florianópolis</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Florianópolis</h3>
+                    <p>Centro, Trindade, Lagoa, Sul e Norte da Ilha</p>
+                </div>
+                <div class="location-card">
+                    <h3>São José</h3>
+                    <p>Todos os bairros com atendimento especializado</p>
+                </div>
+                <div class="location-card">
+                    <h3>Palhoça</h3>
+                    <p>Atendimento em toda a região</p>
+                </div>
+                <div class="location-card">
+                    <h3>Biguaçu</h3>
+                    <p>Suporte técnico rápido e eficiente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contato">
+        <div class="container">
+            <h2>Precisa de Ajuda com Problemas Técnicos?</h2>
+            <p>Entre em contato agora mesmo e agende uma visita técnica</p>
+            <a href="https://wa.me/5548988742011" class="btn" style="background: #25D366; margin-top: 1.5rem;">WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Membrana</h3>
+                    <p>Educação digital, segurança online e soluções técnicas para a Grande Florianópolis.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Conecte-se</h3>
+                    <p>Siga nossas redes para dicas de segurança e novidades do projeto:</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">▶️</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@membrana.com</p>
+                    <p>WhatsApp: (48) 988742011</p>
+                    <p>Atendimento: Seg-Sex, 8h-18h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Membrana - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+                      </html>
