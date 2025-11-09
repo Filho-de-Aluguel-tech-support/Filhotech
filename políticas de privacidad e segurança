@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidade e Segurança - Membrana Tech Solutions</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --success: #38a169;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Content Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .policy-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .policy-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .policy-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .policy-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Values Section */
+        .values {
+            background: #f1f5f9;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Commitment Section */
+        .commitment {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .commitment h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .commitment p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background: #f1f5f9;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+        
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+        
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background: #2c5aa0;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">MEMBRANA</div>
+            <div class="mobile-menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="politicas.html">Políticas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Políticas de Privacidade e Segurança</h1>
+            <p>Nosso compromisso com a proteção dos seus dados e a transparência em todos os nossos serviços</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Nossos Compromissos com Você</h2>
+            <div class="content-grid">
+                <div class="policy-card">
+                    <div class="policy-icon">🔒</div>
+                    <h3>Sigilo Absoluto</h3>
+                    <p>Seus dados pessoais e informações de dispositivos são tratados com total confidencialidade. Não compartilhamos, vendemos ou divulgamos qualquer informação sem sua autorização explícita.</p>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon">🤝</div>
+                    <h3>Honestidade Transparente</h3>
+                    <p>Fornecemos diagnósticos claros e orçamentos detalhados antes de qualquer serviço. Se não podemos resolver seu problema, diremos isso abertamente e indicaremos alternativas quando possível.</p>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon">🛡️</div>
+                    <h3>Segurança em Primeiro Lugar</h3>
+                    <p>Implementamos protocolos rigorosos para proteger seus dispositivos e dados durante todos os serviços, desde instalações simples até configurações complexas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container">
+            <h2 class="section-title">Nossos Valores em Ação</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>Foco na Solução</h3>
+                    <p>Nosso objetivo é resolver o problema que trouxe você até nós, não vender produtos ou serviços desnecessários.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💬</div>
+                    <h3>Comunicação Clara</h3>
+                    <p>Explicamos o problema, as opções de solução e os custos de forma simples e compreensível.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⚖️</div>
+                    <h3>Equilíbrio Custo-Benefício</h3>
+                    <p>Recomendamos sempre a solução mais eficaz considerando seu orçamento e necessidades reais.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🔄</div>
+                    <h3>Atualização Constante</h3>
+                    <p>Mantemos nossos conhecimentos atualizados para oferecer as melhores soluções tecnológicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Instalação e Configuração</h3>
+                    <p>De dispositivos modernos a sistemas complexos, garantimos que tudo funcione perfeitamente desde o primeiro uso.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Atualização e Reconfiguração</h3>
+                    <p>Revitalizamos seus dispositivos existentes com atualizações e reconfigurações que melhoram desempenho e segurança.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Soluções Personalizadas</h3>
+                    <p>Desenvolvemos soluções específicas para necessidades únicas, sempre com foco em resolver seu problema real.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Consultoria em Segurança</h3>
+                    <p>Avaliamos sua configuração atual e recomendamos melhorias para proteger seus dados e privacidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="commitment">
+        <div class="container">
+            <h2>Nosso Compromisso com a Transparência</h2>
+            <p>Não acreditamos em vendas agressivas ou soluções forçadas. Nosso trabalho é diagnosticar corretamente o problema e oferecer a solução mais adequada para sua situação específica, seja com produtos que já possui, ajustes de configuração ou, quando realmente necessário, a aquisição de novos equipamentos.</p>
+            <p>Se podemos resolver seu problema sem custos adicionais, essa será sempre nossa primeira recomendação.</p>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Vocês acessam meus dados pessoais durante os serviços?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não, a menos que seja estritamente necessário para resolver o problema reportado. Quando necessário, solicitamos sua autorização prévia e explicamos claramente o que será acessado e por quê.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>E se não conseguirem resolver meu problema?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Se após avaliação determinarmos que não podemos resolver seu problema, informaremos honestamente e não cobraremos pelo diagnóstico. Quando possível, indicaremos profissionais ou serviços que possam ajudá-lo.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Vocês fazem backup dos meus dados antes de procedimentos de risco?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sempre que um serviço envolver risco potencial de perda de dados, realizamos backup preventivo e informamos sobre esse procedimento. A segurança dos seus dados é nossa prioridade.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como garantem a qualidade dos serviços prestados?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Testamos todas as soluções implementadas antes de considerar o serviço concluído. Além disso, oferecemos suporte pós-serviço para garantir que tudo continue funcionando conforme esperado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Precisa de Ajuda com Seus Dispositivos?</h2>
+            <p>Entre em contato e agende uma visita técnica com transparência e honestidade</p>
+            <a href="https://wa.me/5548999999999" class="btn">WhatsApp</a>
+            <a href="contato.html" class="btn btn-outline">Outras Formas de Contato</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Membrana Tech Solutions</h3>
+                    <p>Serviços técnicos com transparência, segurança e honestidade na Grande Florianópolis.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@membrana.com</p>
+                    <p>WhatsApp: (48) 99999-9999</p>
+                    <p>Atendimento: Seg-Sex, 8h-18h</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Área de Atendimento</h3>
+                    <p>Florianópolis, São José, Palhoça, Biguaçu e região</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">▶️</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Membrana Tech Solutions - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
